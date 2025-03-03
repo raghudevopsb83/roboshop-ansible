@@ -1,9 +1,8 @@
 - name: Copy SystemD service file
   ansible.builtin.template:
-#     src: "{{ component_name }}.service"
-#     dest: /etc/systemd/system/{{ component_name }}.service
-    src: "src.txt"
-    dest: /tmp/dest.txt
+    src: "{{ component_name }}.service"
+    dest: /etc/systemd/system/{{ component_name }}.service
+
 
 - name: Start Service
   ansible.builtin.systemd_service:
