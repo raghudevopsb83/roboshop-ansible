@@ -3,3 +3,6 @@ systemd_service_variables:
   - REDIS_HOST
   - CATALOGUE_HOST
 
+x:
+  - a
+  - b

@@ -1,0 +1,4 @@
+    {% for item in x %}
+       name - {{ item }}
+    {% endfor %}
+
