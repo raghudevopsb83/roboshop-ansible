@@ -5,3 +5,17 @@
   vars:
     app_port: 8080
 
+
+- name: Load Schema
+  community.docker.docker_container:
+    name: "{{ component }}-schema"
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/{{ component }}
+    state: started
+    recreate: true
+    ports:
+      - "{{ app_port }}:{{ app_port }}"
+    env_file: /opt/{{ component }}.env
+
+
+
+docker run -e DB_TYPE=mongo -e APP_GIT_URL=https://github.com/roboshop-devops-project-v3/catalogue -e DB_HOST=mongo-ip -e SCHEMA_FILE=db/master-data.js public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
