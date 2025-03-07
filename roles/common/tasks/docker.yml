@@ -29,10 +29,9 @@
 - name: Create container secret
   ansible.builtin.lineinfile:
     path: /opt/{{ component }}.env
-    line: "{{ component_secrets }}"
-    #line: "{{item.key}}={{item.value}}"
+    line: "{{item.key}}={{item.value}}"
     create: yes
-  #loop: "{{ component_secrets|dict2items }}"
+  loop: "{{ component_secrets|dict2items }}"
 
 - name: Run Container
   community.docker.docker_container:
